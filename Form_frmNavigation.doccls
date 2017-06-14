@@ -1,0 +1,43 @@
+Option Compare Database
+Option Explicit
+
+Private Sub cmdViewRecent_Click()
+    ' Status:  In Devlopment
+    ' Comments:
+    ' Params  :
+    ' Created : 10/05/16 08:42 GB
+    ' Modified:
+    
+    'TVCodeTools ErrorEnablerStart
+    On Error GoTo PROC_ERR
+    'TVCodeTools ErrorEnablerEnd
+
+'set recordsource for form
+DoCmd.OpenForm "frmViewEvents", acNormal, , , acFormReadOnly, acWindowNormal
+
+Forms!frmViewEvents.RecordSource = "qryRecentEvents"
+
+Forms!frmViewEvents.Label8.Caption = "Last 10 Records"
+
+
+Forms!frmViewEvents.Requery
+
+
+
+
+
+
+
+
+
+    'TVCodeTools ErrorHandlerStart
+PROC_EXIT:
+    Exit Sub
+
+PROC_ERR:
+    MsgBox Err.Description, vbCritical, Me.Name & ".cmdViewRecent_Click"
+    Resume PROC_EXIT
+    'TVCodeTools ErrorHandlerEnd
+
+
+End Sub

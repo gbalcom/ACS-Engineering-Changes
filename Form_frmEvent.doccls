@@ -1,0 +1,33 @@
+Option Compare Database
+Option Explicit
+
+Private Sub btnNewTag_Click()
+    ' Status:  In Devlopment
+    ' Comments:
+    ' Params  :
+    ' Created : 02/14/17 13:12 GB
+    ' Modified:
+    
+    'TVCodeTools ErrorEnablerStart
+    On Error GoTo PROC_ERR
+    'TVCodeTools ErrorEnablerEnd
+
+
+DoCmd.OpenForm "frmTags", acNormal, , , acFormAdd, acWindowNormal
+
+
+
+
+
+
+    'TVCodeTools ErrorHandlerStart
+PROC_EXIT:
+    Exit Sub
+
+PROC_ERR:
+    MsgBox Err.Description, vbCritical, Me.Name & ".btnNewTag_Click"
+    Resume PROC_EXIT
+    'TVCodeTools ErrorHandlerEnd
+
+
+End Sub
